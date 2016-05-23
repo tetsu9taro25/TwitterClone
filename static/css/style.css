@@ -1,0 +1,188 @@
+@charset "UTF-8";
+body {
+  background: #dde6ed;
+  color: #57575f;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "MSPGothic", "ＭＳ Ｐゴシック", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+a {
+  text-decoration: none;
+  color: #56baf8; }
+
+input, button, textarea, select {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
+
+i {
+  margin-right: 5px;
+  vertical-align: 0 !important; }
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #ccc; }
+  header .wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    width: 900px;
+    margin: 0 auto; }
+    header .wrapper nav {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin-right: auto; }
+      header .wrapper nav a {
+        display: block;
+        padding: 20px 20px 10px;
+        color: inherit;
+        border-bottom: 4px solid transparent; }
+        header .wrapper nav a:hover {
+          border-bottom: 4px solid #3eb0f7; }
+    header .wrapper .search-input {
+      position: relative;
+      margin-right: 20px; }
+      header .wrapper .search-input input {
+        padding: 3px 27px 3px 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc; }
+      header .wrapper .search-input i {
+        position: absolute;
+        top: 5px;
+        right: 5px; }
+    header .wrapper .cog {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 2px 20px 0 0;
+      color: inherit; }
+    header .wrapper .post-btn {
+      position: relative;
+      display: block;
+      width: 35px;
+      height: 35px;
+      margin-right: 10px;
+      border-radius: 50%;
+      background: #3eb0f7;
+      color: #fff; }
+      header .wrapper .post-btn i {
+        position: absolute;
+        top: 10px;
+        left: 9px; }
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 900px;
+  margin: 50px auto; }
+
+.side-column {
+  margin-right: auto; }
+  .side-column .profile {
+    width: 300px;
+    border: 1px solid #ccc; }
+    .side-column .profile .name-box {
+      position: relative;
+      padding: 20px 20px 20px 135px;
+      background: #3eb0f7; }
+      .side-column .profile .name-box p {
+        margin: 0;
+        color: #fff; }
+        .side-column .profile .name-box p a {
+          color: #fff; }
+      .side-column .profile .name-box .person-name {
+        font-weight: bold;
+        font-size: 1.1rem; }
+      .side-column .profile .name-box .person-icon {
+        position: absolute;
+        top: -30px;
+        left: 20px; }
+        .side-column .profile .name-box .person-icon img {
+          border-radius: 50%; }
+    .side-column .profile .post-box {
+      padding: 20px;
+      background: #fff;
+      overflow: hidden; }
+      .side-column .profile .post-box p {
+        margin: 0; }
+      .side-column .profile .post-box textarea {
+        width: 100%;
+        margin-top: 20px;
+        padding: 7px;
+        resize: none;
+        border: 1px solid #ccc; }
+      .side-column .profile .post-box button {
+        float: right;
+        margin-top: 20px;
+        padding: 7px 25px;
+        background: #3eb0f7;
+        border-radius: 20px;
+        color: #fff;
+        cursor: pointer; }
+
+.feed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  width: 510px;
+  padding: 20px;
+  background: #fff;
+  overflow: hidden;
+  border: 1px solid #ccc; }
+  .feed .person-icon {
+    margin-right: 10px; }
+    .feed .person-icon img {
+      border-radius: 50%; }
+  .feed .name-date-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .feed .name-box {
+    margin-right: auto; }
+  .feed .person-name {
+    font-size: 1.1rem;
+    font-weight: bold; }
+  .feed .person-id {
+    margin-left: 5px; }
+    .feed .person-id a {
+      color: #aaa; }
+  .feed .post-date {
+    margin-top: 20px;
+    color: #aaa; }
+  .feed .comment {
+    margin-top: 0; }
+    .feed .comment > a:hover {
+      text-decoration: underline; }
+  .feed .main-img {
+    height: 100px;
+    overflow: hidden;
+    border: 1px solid #aaa; }
+    .feed .main-img img {
+      width: 100%; }
+  .feed .command-box {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .feed .command-box a {
+    color: #aaa;
+    text-decoration: none; }
+  .feed .command-box > p:last-child {
+    margin-left: 18px; }
+  .feed .reply {
+    margin-right: auto; }

@@ -1,4 +1,6 @@
-if (typeof(window.console) == "undefined") { console = {}; console.log = console.warn = console.error = function(a) {}; }
+function al() {
+  alert("hogeeeee");
+}
 
-$(function () {
-});
+var element = document.querySelector('.post-btn');
+element.addEventListener("click", al, false);

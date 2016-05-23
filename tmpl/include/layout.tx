@@ -1,20 +1,38 @@
 <!doctype html>
 <html>
-<head>
+  <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>TwitterClone</title>
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" />
     <script src="<: uri_for('/static/js/jquery-2.1.1.min.js') :>"></script>
     <link href="<: static_file('/static/css/style.css') :>" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<: static_file('/static/css/font-awesome.min.css') :>" rel="stylesheet" type="text/css" media="screen" />
     <script src="<: static_file('/static/js/main.js') :>"></script>
     <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-</head>
-<body>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrapper">
+        <nav>
+          <a href="#"><i class="fa fa-lg fa-home" aria-hidden="true"></i>ホーム</a>
+          <a href="#"><i class="fa fa-lg fa-at" aria-hidden="true"></i>メンション</a>
+          <a href="#"><i class="fa fa-lg fa-comments-o" aria-hidden="true"></i>すべての投稿</a>
+        </nav>
+        <form class="search-input">
+          <input placeholder="検索">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </form>
+        <a href="#" class="cog"><i class="fa fa-lg fa-cog" aria-hidden="true"></i></a>
+        <a href="#" class="post-btn"><i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i></a>
+      </div>
+    </header>
   <: block content -> { } :>
 </body>
 </html>
