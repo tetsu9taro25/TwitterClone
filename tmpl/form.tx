@@ -2,8 +2,13 @@
 : override content -> {
 
 <form method="POST" action="<: $action :>">
+  <input type="hidden" name="user_id" value="1" />
   <textarea name="text" rows="10" cols="50"></textarea>
   <input type="submit" value="<: $button :>" />
 </form>
+
+: for $messages -> $message {
+  <p><: $message.text :></p>
+: }
 
 : }
