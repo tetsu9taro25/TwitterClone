@@ -15,7 +15,7 @@ sub dispatch {
 __PACKAGE__->load_plugins(
     'Web::FillInFormLite',
     'Web::JSON',
-    '+TwitterClone::Web::Plugin::Session',
+#    '+TwitterClone::Web::Plugin::Session',
 );
 
 # setup view
