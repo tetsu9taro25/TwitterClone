@@ -2,7 +2,7 @@ package TwitterClone::Repository::Message;
 use strict;
 use warnings;
 use utf8;
-
+use Data::Dumper;
 use TwitterClone;
 
 sub db { TwitterClone->context->db }
@@ -17,15 +17,7 @@ sub fetch_by_id {
 sub fetch_all {
   my ($class) = @_;
   my @messages =  $class->db->search('message',{deleted => 0},{order_by => 'created_at DESC'});
-  for (my $i = 0; $i <= $#messages; $i++){
-    my $date = $messages[$i]->{row_data}->{created_at};
-    $date =~ s/-/年/;
-    $date =~ s/-/月/;
-    $date =~ s/ /日 /;
-    my @list = split(/:/, $date);
-    my $new_date = $list[0] . ":" .  $list[1] . "\n";
-    $messages[$i]->{row_data}->{created_at} = $new_date;
-  }
+  $class->parse(@messages);
   return @messages;
 }
 
@@ -33,12 +25,8 @@ sub create {
   my ($class, $user_id, $text) = @_;
 
   my $id = $class->db->fast_insert(message => {user_id => $user_id, text => $text});
-  my $row = $class->db->single(message => {}, {
-      columns  => [qw/id/],
-      order_by => {id => 'DESC'},
-    });
 
-  return $row->id;
+  return $id;
 }
 
 sub update {

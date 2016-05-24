@@ -1,5 +1,9 @@
 : cascade "include/layout.tx"
 : override content -> {
 <form method="POST" action="/signup">
+  <input name="screen_name" type="text" placeholder="ID">
+  <input name="name" type="text" placeholder="ニックネーム">
+  <input name="password" type="text" placeholder="パスワード">
+  <button type="submit"></button>
 </form>
 : }
