@@ -28,7 +28,7 @@ sub get_root {
 #    });
 #}
 
-sub post_root {
+sub post_new {
   my ($class, $c, $args) = @_;
 
   my $user_id = $c->req->parameters->{user_id}
@@ -42,10 +42,20 @@ sub post_root {
   return $c->redirect("/");
 }
 
-sub post_id {
+sub post_id_edit {
   my ($class, $c, $args) = @_;
   my $id = $args->{id};
+  my $text = $c->req->parameters->{text} or return $c->res_400;
+  my $old_text = TwitterClone::Repository::Message->fetch_by_id($id) or return $c->res_404;
 
+  TwitterClone::Repository::Message->update($id, $text);
+
+  return $c->redirect("/");
+}
+
+sub post_id_delete {
+  my ($class, $c, $args) = @_;
+  my $id = $args->{id};
   my $text = $c->req->parameters->{text} or return $c->res_400;
   my $old_text = TwitterClone::Repository::Message->fetch_by_id($id) or return $c->res_404;
 
