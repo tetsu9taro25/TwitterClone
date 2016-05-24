@@ -17,7 +17,7 @@ sub create {
 
   my $id = TwitterClone::Repository::Message->create($user_id, $text);
 
-  return $c->redirect("/");
+  return $c->redirect("/discover");
 }
 
 sub edit {
@@ -28,7 +28,7 @@ sub edit {
 
   TwitterClone::Repository::Message->update($id, $text);
 
-  return $c->redirect("/");
+  return $c->redirect("/discover");
 }
 
 sub delete {
@@ -37,7 +37,7 @@ sub delete {
 
   TwitterClone::Repository::Message->delete($id);
 
-  return $c->redirect("/");
+  return $c->redirect("/discover");
 }
 
 1;

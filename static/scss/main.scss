@@ -27,6 +27,10 @@ input, button, textarea, select {
   box-sizing: border-box;
 }
 
+input:focus, button:focus, textarea:focus, selectfocus:focus {
+  outline: 1px #ff0000 dashed;
+}
+
 button {
   cursor: pointer;
 }
@@ -169,6 +173,10 @@ header {
         &:hover {
           border-bottom: 4px solid $main-blue;
         }
+      }
+
+      .is-current {
+        border-bottom: 4px solid $main-blue;
       }
     }
 

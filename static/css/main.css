@@ -27,6 +27,9 @@ input, button, textarea, select {
   -webkit-box-sizing: border-box;
           box-sizing: border-box; }
 
+input:focus, button:focus, textarea:focus, selectfocus:focus {
+  outline: 1px #ff0000 dashed; }
+
 button {
   cursor: pointer; }
 
@@ -136,6 +139,8 @@ header {
         border-bottom: 4px solid transparent; }
         header .wrapper nav a:hover {
           border-bottom: 4px solid #3eb0f7; }
+      header .wrapper nav .is-current {
+        border-bottom: 4px solid #3eb0f7; }
     header .wrapper .search-input {
       position: relative;
       margin-right: 20px; }
