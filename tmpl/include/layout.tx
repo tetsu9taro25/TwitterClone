@@ -9,7 +9,7 @@
     <meta name="format-detection" content="telephone=no" />
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" />
     <script src="<: uri_for('/static/js/vendor/jquery-2.1.1.min.js') :>"></script>
-    <link href="<: static_file('/static/css/style.css') :>" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<: static_file('/static/css/main.css') :>" rel="stylesheet" type="text/css" media="screen" />
     <link href="<: static_file('/static/font-awesome/css/font-awesome.min.css') :>" rel="stylesheet" type="text/css" media="screen" />
     <script src="<: static_file('/static/js/main.js') :>"></script>
     <!--[if lt IE 9]>

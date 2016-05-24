@@ -36,6 +36,10 @@ i {
   vertical-align: 0 !important;
 }
 
+p {
+  word-wrap: break-word;
+}
+
 $main-gray: #aaa;
 $thin-gray: #ccc;
 $bg-gray: #dde6ed;
@@ -323,6 +327,10 @@ main {
   overflow: hidden;
   border: 1px solid $thin-gray;
 
+  .wrapper {
+    word-break : break-all;
+  }
+
   .person-icon {
     margin-right: 10px;
 
@@ -364,6 +372,7 @@ main {
 
   .comment {
     margin-top: 0;
+    word-wrap: break-word;
 
     > a:hover {
       text-decoration: underline;

@@ -34,6 +34,9 @@ i {
   margin-right: 5px;
   vertical-align: 0 !important; }
 
+p {
+  word-wrap: break-word; }
+
 .overlay, .overlay-trans {
   display: none;
   position: fixed;
@@ -250,6 +253,8 @@ main {
   background: #fff;
   overflow: hidden;
   border: 1px solid #ccc; }
+  .feed .wrapper {
+    word-break: break-all; }
   .feed .person-icon {
     margin-right: 10px; }
     .feed .person-icon img {
@@ -273,7 +278,8 @@ main {
     margin-top: 20px;
     color: #aaa; }
   .feed .comment {
-    margin-top: 0; }
+    margin-top: 0;
+    word-wrap: break-word; }
     .feed .comment > a:hover {
       text-decoration: underline; }
   .feed .main-img {

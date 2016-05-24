@@ -2,12 +2,14 @@ package TwitterClone::Web::C::Page;
 use strict;
 use warnings;
 use utf8;
+use Data::Dumper;
 
 use TwitterClone::Repository::Message;
 
 sub get_root {
   my ($class, $c, $args) = @_;
   my @messages = TwitterClone::Repository::Message->fetch_all;
+  print Dumper @messages;
 
   return $c->render('index.tx', {
       messages => \@messages,

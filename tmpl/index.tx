@@ -56,7 +56,7 @@
 : for $messages -> $message {
         <div class="feed">
           <p class="person-icon"><a href="#"><img src="http://placehold.it/50x50"></a></p>
-          <div class="">
+          <div class="wrapper">
             <div class="name-date-box">
               <p class="name-box"><span class="person-name"><a href="#">ツル舞うかたちの富山県</a></span><span class="person-id"><a href="#">@okayama</a></span></p>
               <p class="post-date"><: $message.created_at :></p>

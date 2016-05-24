@@ -37,11 +37,14 @@ var paths = {
     '!' + indirection + '/**/_*.scss'
   ],
   htmlhint: [
-    indirection + '/*.html',
+    'tmpl/*.tx',
   ],
   watch: {
     styles: [
       indirection + '/**/*.scss'
+    ],
+    htmlhint: [
+      'tmpl/*.tx',
     ]
   }
 };
