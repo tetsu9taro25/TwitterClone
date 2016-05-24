@@ -10,10 +10,23 @@ sub get_root {
   my @messages = TwitterClone::Repository::Message->fetch_all;
 
   return $c->render('index.tx', {
-      action => '/',
       messages => \@messages,
     });
 }
+
+#sub get_id {
+#  my ($class, $c, $args) = @_;
+#  my $id = $args->{id};
+#
+#  my $text = TwitterClone::Repository::Message->fetch_by_id($id)
+#    or return $c->res_404;
+#
+#  $c->fillin_form({text => $text});
+#  return $c->render('form.tx', {
+#      action => "/$id",
+#      button => 'update',
+#    });
+#}
 
 sub post_root {
   my ($class, $c, $args) = @_;
@@ -25,6 +38,18 @@ sub post_root {
     or return $c->res_400;
 
   my $id = TwitterClone::Repository::Message->create($user_id, $text);
+
+  return $c->redirect("/");
+}
+
+sub post_id {
+  my ($class, $c, $args) = @_;
+  my $id = $args->{id};
+
+  my $text = $c->req->parameters->{text} or return $c->res_400;
+  my $old_text = TwitterClone::Repository::Message->fetch_by_id($id) or return $c->res_404;
+
+  TwitterClone::Repository::Message->update($id, $text);
 
   return $c->redirect("/");
 }
