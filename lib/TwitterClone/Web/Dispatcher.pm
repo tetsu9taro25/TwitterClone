@@ -11,5 +11,6 @@ get  '/'    => 'Page#get_root';
 post '/message/new'    => 'Page#post_new';
 post '/message/:id/edit'    => 'Page#post_id_edit';
 post '/message/:id/delete'    => 'Page#post_id_delete';
+get '/signup'    => 'Page#get_signup';
 
 1;

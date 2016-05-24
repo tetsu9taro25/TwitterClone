@@ -16,7 +16,17 @@ sub fetch_by_id {
 
 sub fetch_all {
   my ($class) = @_;
-  return $class->db->search('message',{deleted => 0},{order_by => 'created_at DESC'});
+  my @messages =  $class->db->search('message',{deleted => 0},{order_by => 'created_at DESC'});
+  for (my $i = 0; $i <= $#messages; $i++){
+    my $date = $messages[$i]->{row_data}->{created_at};
+    $date =~ s/-/年/;
+    $date =~ s/-/月/;
+    $date =~ s/ /日 /;
+    my @list = split(/:/, $date);
+    my $new_date = $list[0] . ":" .  $list[1] . "\n";
+    $messages[$i]->{row_data}->{created_at} = $new_date;
+  }
+  return @messages;
 }
 
 sub create {

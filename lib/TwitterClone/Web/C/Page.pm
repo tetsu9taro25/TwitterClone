@@ -9,7 +9,6 @@ use TwitterClone::Repository::Message;
 sub get_root {
   my ($class, $c, $args) = @_;
   my @messages = TwitterClone::Repository::Message->fetch_all;
-  print Dumper @messages;
 
   return $c->render('index.tx', {
       messages => \@messages,
@@ -48,6 +47,13 @@ sub post_id_delete {
   TwitterClone::Repository::Message->delete($id);
 
   return $c->redirect("/");
+}
+
+sub get_signup {
+  my ($class, $c, $args) = @_;
+
+  return $c->render('signup.tx', {
+    });
 }
 
 1;
