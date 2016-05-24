@@ -14,20 +14,6 @@ sub get_root {
     });
 }
 
-#sub get_id {
-#  my ($class, $c, $args) = @_;
-#  my $id = $args->{id};
-#
-#  my $text = TwitterClone::Repository::Message->fetch_by_id($id)
-#    or return $c->res_404;
-#
-#  $c->fillin_form({text => $text});
-#  return $c->render('form.tx', {
-#      action => "/$id",
-#      button => 'update',
-#    });
-#}
-
 sub post_new {
   my ($class, $c, $args) = @_;
 
@@ -56,10 +42,8 @@ sub post_id_edit {
 sub post_id_delete {
   my ($class, $c, $args) = @_;
   my $id = $args->{id};
-  my $text = $c->req->parameters->{text} or return $c->res_400;
-  my $old_text = TwitterClone::Repository::Message->fetch_by_id($id) or return $c->res_404;
 
-  TwitterClone::Repository::Message->update($id, $text);
+  TwitterClone::Repository::Message->delete($id);
 
   return $c->redirect("/");
 }

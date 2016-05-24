@@ -16,7 +16,7 @@ sub fetch_by_id {
 
 sub fetch_all {
   my ($class) = @_;
-  return $class->db->search('message');
+  return $class->db->search('message',{deleted => 0},{order_by => 'created_at DESC'});
 }
 
 sub create {
@@ -36,5 +36,11 @@ sub update {
 
   $class->db->update(message => {text => $text}, {id => $id});
 }
-1;
 
+sub delete {
+  my ($class, $id) = @_;
+
+  $class->db->update(message => {deleted => 1}, {id => $id});
+}
+
+1;
