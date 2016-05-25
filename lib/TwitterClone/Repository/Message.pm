@@ -11,14 +11,7 @@ sub fetch_by_id {
   my ($class, $id) = @_;
 
   my $row = $class->db->single(message => {id => $id});
-  #return $row ? $row->text : undef;
-}
-
-sub fetch_all {
-  my ($class) = @_;
-  my @messages =  $class->db->search('message',{deleted => 0},{order_by => 'created_at DESC'});
-  $class->parse(@messages);
-  return @messages;
+  return $row ? $row->text : undef;
 }
 
 sub create {

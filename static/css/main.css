@@ -331,7 +331,10 @@ main {
   text-align: center;
   margin-bottom: 25px; }
 
-.signup input[type="text"], .profile input[type="text"] {
+.signup .screen_name, .profile .screen_name {
+  text-align: center; }
+
+.signup input[type="text"], .signup textarea, .profile input[type="text"], .profile textarea {
   width: 100%;
   padding: 10px;
   border-radius: 5px;

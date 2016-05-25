@@ -1,0 +1,19 @@
+: cascade "include/layout.tx"
+: override content -> {
+
+<main class="signup">
+  <div class="form-area">
+    <h1>TwitterCloneにログイン！</h1>
+: if($error_message){
+    <p class="error_message"><: $error_message :></p>
+: }
+    <form method="POST" action="/signup">
+      <p><input name="screen_name" type="text" placeholder="ID" value="<: $screen_name :>"></p>
+      <p><input name="name" type="text" placeholder="ニックネーム" value="<: $name :>"></p>
+      <p><input name="password" type="text" placeholder="パスワード" value="<: $password :>"></p>
+      <p class="submit-button"><button type="submit">アカウント作成</button></p>
+    </form>
+  </div>
+</main>
+
+: }
