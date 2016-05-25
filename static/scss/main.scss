@@ -37,7 +37,7 @@ button {
 
 i {
   margin-right: 5px;
-  vertical-align: 0 !important;
+  vertical-align: -1px !important;
 }
 
 p {
@@ -277,6 +277,25 @@ header {
         left: 9px;
       }
     }
+
+    .border-btn {
+      display: block;
+      padding: 8px 20px;
+      border: 1px solid $thin-gray;
+      border-radius: 5px;
+    }
+
+    .login-btn {
+      margin-left: 20px;
+      background: #fafafa;
+      color: inherit;
+    }
+
+    .account-btn {
+      color: #fff;
+      border: 1px solid $main-blue;
+      background: $main-blue;
+    }
   }
 }
 
@@ -422,7 +441,7 @@ main {
   }
 }
 
-.signup {
+.signup, .profile {
 
   .form-area {
     width: 400px;
@@ -433,6 +452,7 @@ main {
 
   h1 {
     text-align: center;
+    margin-bottom: 25px;
   }
 
   input[type="text"] {
@@ -444,16 +464,15 @@ main {
 
   .submit-button {
     text-align: center;
-  }
 
-  button {
-    margin-top: 20px;
-    padding: 7px 25px;
-    background: $main-blue;
-    border-radius: 20px;
-    color: #fff;
+    button {
+      margin-top: 10px;
+      padding: 10px 30px;
+      background: $main-blue;
+      border-radius: 20px;
+      color: #fff;
+    }
   }
-
   .error_message {
     color: red;
   }

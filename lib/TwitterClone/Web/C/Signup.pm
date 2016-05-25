@@ -14,6 +14,7 @@ sub new {
       name => '',
       password => '',
       error_message => undef,
+      current => 'signup',
     });
 }
 
@@ -28,7 +29,8 @@ sub create {
       screen_name => $screen_name,
       name => $name,
       password => $password,
-      error_message => 'なに空文字入れて送信してんねんボケ！',
+      error_message => 'なに空文字入れて送信しとんねんボケ！',
+      current => 'signup',
     });
   }
 

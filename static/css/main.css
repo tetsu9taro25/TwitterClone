@@ -35,7 +35,7 @@ button {
 
 i {
   margin-right: 5px;
-  vertical-align: 0 !important; }
+  vertical-align: -1px !important; }
 
 p {
   word-wrap: break-word; }
@@ -216,6 +216,19 @@ header {
         position: absolute;
         top: 10px;
         left: 9px; }
+    header .wrapper .border-btn {
+      display: block;
+      padding: 8px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px; }
+    header .wrapper .login-btn {
+      margin-left: 20px;
+      background: #fafafa;
+      color: inherit; }
+    header .wrapper .account-btn {
+      color: #fff;
+      border: 1px solid #3eb0f7;
+      background: #3eb0f7; }
 
 main {
   display: -webkit-box;
@@ -308,30 +321,30 @@ main {
       float: left;
       margin-right: auto; }
 
-.signup .form-area {
+.signup .form-area, .profile .form-area {
   width: 400px;
   margin: 0 auto;
   padding: 20px;
   background: #fff; }
 
-.signup h1 {
-  text-align: center; }
+.signup h1, .profile h1 {
+  text-align: center;
+  margin-bottom: 25px; }
 
-.signup input[type="text"] {
+.signup input[type="text"], .profile input[type="text"] {
   width: 100%;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #ccc; }
 
-.signup .submit-button {
+.signup .submit-button, .profile .submit-button {
   text-align: center; }
+  .signup .submit-button button, .profile .submit-button button {
+    margin-top: 10px;
+    padding: 10px 30px;
+    background: #3eb0f7;
+    border-radius: 20px;
+    color: #fff; }
 
-.signup button {
-  margin-top: 20px;
-  padding: 7px 25px;
-  background: #3eb0f7;
-  border-radius: 20px;
-  color: #fff; }
-
-.signup .error_message {
+.signup .error_message, .profile .error_message {
   color: red; }

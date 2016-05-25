@@ -21,9 +21,18 @@
     <header>
       <div class="wrapper">
         <nav>
-          <a href="/"><i class="fa fa-lg fa-home" aria-hidden="true"></i>ホーム</a>
+          <a href="/"
+            : if $current == "home" {
+            class="is-current"
+            : }
+            ><i class="fa fa-lg fa-home " aria-hidden="true"></i>ホーム</a>
         </nav>
-        <button class="login-btn"><i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i>ログイン</button>
+: if $current != "signup" {
+        <a href="/signup" class="account-btn border-btn"><i class="fa fa-lg fa-user-plus" aria-hidden="true"></i>アカウント作成</a>
+: }
+: if $current != "login" {
+        <a href="/login" class="login-btn border-btn"><i class="fa fa-lg fa-sign-in" aria-hidden="true"></i>ログイン</a>
+: }
       </div>
     </header>
   <: block content -> { } :>
