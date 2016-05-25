@@ -10,6 +10,10 @@ sub new {
   my ($class, $c, $args) = @_;
 
   return $c->render('signup.tx', {
+      screen_name => '',
+      name => '',
+      password => '',
+      error_message => undef,
     });
 }
 
@@ -19,8 +23,16 @@ sub create {
   my $name = $c->req->parameters->{name};
   my $password = $c->req->parameters->{password};
 
-  TwitterClone::Repository::Signup->create($screen_name, $name, $password);
+  if($screen_name eq '' || $name eq '' ||  $password eq ''){
+    return $c->render('signup.tx', {
+      screen_name => $screen_name,
+      name => $name,
+      password => $password,
+      error_message => 'なに空文字入れて送信してんねんボケ！',
+    });
+  }
 
+  TwitterClone::Repository::Signup->create($screen_name, $name, $password);
   return $c->redirect("/$screen_name");
 }
 

@@ -51,6 +51,9 @@
           </div>
         </div>
       </div>
+: if($error_message){
+        <p><: $errror_message :></p>
+: }
       <div class="main-column">
 
 : for $messages -> $message {

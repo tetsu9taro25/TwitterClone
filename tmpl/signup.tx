@@ -1,9 +1,13 @@
 : cascade "include/layout.tx"
 : override content -> {
+
+: if($error_message){
+<p style="color:red;font-wight:bold;"><: $error_message :></p>
+: }
 <form method="POST" action="/signup">
-  <input name="screen_name" type="text" placeholder="ID">
-  <input name="name" type="text" placeholder="ニックネーム">
-  <input name="password" type="text" placeholder="パスワード">
+  <input name="screen_name" type="text" placeholder="ID" value="<: $screen_name :>">
+  <input name="name" type="text" placeholder="ニックネーム" value="<: $name :>">
+  <input name="password" type="text" placeholder="パスワード" value="<: $password :>">
   <button type="submit"></button>
 </form>
 : }
