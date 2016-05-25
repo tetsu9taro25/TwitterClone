@@ -9,6 +9,8 @@ use TwitterClone::Web::C::Signup;
 
 base 'TwitterClone::Web::C';
 
+get  '/'    => 'Discover#home';
+
 get  '/discover'    => 'Discover#index';
 post '/message/new'    => 'Message#create';
 post '/message/:id/edit'    => 'Message#edit';

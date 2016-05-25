@@ -422,3 +422,39 @@ main {
   }
 }
 
+.signup {
+
+  .form-area {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid $thin-gray;
+  }
+
+  .submit-button {
+    text-align: center;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 7px 25px;
+    background: $main-blue;
+    border-radius: 20px;
+    color: #fff;
+  }
+
+  .error_message {
+    color: red;
+  }
+}

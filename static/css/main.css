@@ -307,3 +307,31 @@ main {
       display: none;
       float: left;
       margin-right: auto; }
+
+.signup .form-area {
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #fff; }
+
+.signup h1 {
+  text-align: center; }
+
+.signup input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc; }
+
+.signup .submit-button {
+  text-align: center; }
+
+.signup button {
+  margin-top: 20px;
+  padding: 7px 25px;
+  background: #3eb0f7;
+  border-radius: 20px;
+  color: #fff; }
+
+.signup .error_message {
+  color: red; }
