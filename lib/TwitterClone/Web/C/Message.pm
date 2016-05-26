@@ -9,7 +9,7 @@ use TwitterClone::Repository::Message;
 sub create {
   my ($class, $c, $args) = @_;
 
-  my $user_id = $c->req->parameters->{user_id}
+  my $user_id = $c->session->get('user_id')
     or return $c->res_400;
 
   my $text = $c->req->parameters->{text}

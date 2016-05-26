@@ -62,10 +62,11 @@
           <p class="person-icon"><a href="#"><img src="http://placehold.it/50x50"></a></p>
           <div class="wrapper">
             <div class="name-date-box">
-              <p class="name-box"><span class="person-name"><a href="#"><: $all_user_data[$message.user_id].name :></a></span><br><span class="person-id"><a href="#">@<: $all_user_data[$message.user_id].screen_name :></a></span></p>
+              <p class="name-box"><span class="person-name"><a href="#"><: $all_user_data[$message.user_id - 1].name :></a></span><br><span class="person-id"><a href="#">@<: $all_user_data[$message.user_id - 1].screen_name :></a></span></p>
               <p class="post-date"><: $message.created_at :></p>
             </div>
             <p class="comment"><: $message.text :></p>
+<: $message.user_id - 1 :>
             <div class="main-img"><img src="http://placehold.it/450x250"></div>
             <div class="command-box" data-message-id="<: $message.id :>" >
               <p class="reply"><button><i class="fa fa-lg fa-share" aria-hidden="true"></i>返信</button></p>
