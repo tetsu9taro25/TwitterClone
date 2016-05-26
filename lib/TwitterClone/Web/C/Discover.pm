@@ -16,10 +16,12 @@ sub home {
 sub index {
   my ($class, $c, $args) = @_;
   my @messages = TwitterClone::Repository::Discover->fetch_all_posts;
-  my $user_id = 3; #セッションからとってくる
+  my @all_user_data = TwitterClone::Repository::Discover->fetch_all_user_data;
+  my $user_id = $c->session->get('user_id');
   my $user_data = TwitterClone::Repository::Discover->fetch_user_profile($user_id);
   return $c->render('login_index.tx', {
       messages => \@messages,
+      all_user_data => \@all_user_data,
       user_data => $user_data,
       current => 'discover',
     });

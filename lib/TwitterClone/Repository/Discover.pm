@@ -14,6 +14,12 @@ sub fetch_all_posts {
   return @messages;
 }
 
+sub fetch_all_user_data {
+  my ($class) = @_;
+  my @users_data =  $class->db->search('user');
+  return @users_data;
+}
+
 sub fetch_user_profile {
   my ($class, $user_id) = @_;
   return $class->db->single(user => {id => $user_id});

@@ -62,7 +62,7 @@
           <p class="person-icon"><a href="#"><img src="http://placehold.it/50x50"></a></p>
           <div class="wrapper">
             <div class="name-date-box">
-              <p class="name-box"><span class="person-name"><a href="#">ツル舞うかたちの富山県</a></span><br><span class="person-id"><a href="#">@okayama</a></span></p>
+              <p class="name-box"><span class="person-name"><a href="#"><: $all_user_data[$message.user_id].name :></a></span><br><span class="person-id"><a href="#">@<: $all_user_data[$message.user_id].screen_name :></a></span></p>
               <p class="post-date"><: $message.created_at :></p>
             </div>
             <p class="comment"><: $message.text :></p>
