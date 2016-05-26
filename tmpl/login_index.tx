@@ -35,7 +35,7 @@
     </div>
     <main>
       <div class="side-column">
-        <div class="profile">
+        <div class="profile-box">
           <div class="name-box">
             <p class="person-name"><a href="#">ここのか</a></p>
             <p class="person-id"><a href="#">@kokonoka</a></p>

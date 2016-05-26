@@ -239,26 +239,26 @@ main {
 
 .side-column {
   margin-right: auto; }
-  .side-column .profile {
+  .side-column .profile-box {
     width: 300px;
     border: 1px solid #ccc; }
-    .side-column .profile .name-box {
+    .side-column .profile-box .name-box {
       position: relative;
       padding: 20px 20px 20px 135px;
       background: #3eb0f7; }
-      .side-column .profile .name-box p {
+      .side-column .profile-box .name-box p {
         margin: 0;
         color: #fff; }
-        .side-column .profile .name-box p a {
+        .side-column .profile-box .name-box p a {
           color: #fff; }
-      .side-column .profile .name-box .person-name {
+      .side-column .profile-box .name-box .person-name {
         font-weight: bold;
         font-size: 1.1rem; }
-      .side-column .profile .name-box .person-icon {
+      .side-column .profile-box .name-box .person-icon {
         position: absolute;
         top: -30px;
         left: 20px; }
-        .side-column .profile .name-box .person-icon img {
+        .side-column .profile-box .name-box .person-icon img {
           border-radius: 50%; }
 
 .feed {
