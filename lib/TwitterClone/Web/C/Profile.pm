@@ -20,6 +20,7 @@ sub new {
 
 sub update {
   my ($class, $c, $args) = @_;
+  my $image_path = TwitterClone::Repository::Profile->image_upload($c->req->uploads->{'image'}, $c->base_dir());
   my %user_data = (
     screen_name => 'fa',#セッションから引っ張ってくる
     id => 3, #セッションから引っ張ってくる
@@ -27,7 +28,9 @@ sub update {
     password => $c->req->parameters->{password},
     mail => $c->req->parameters->{mail},
     text => $c->req->parameters->{text},
+    image => $image_path,
   );
+
   if($user_data{name} eq '' ||  $user_data{password} eq ''){
     return $c->render('profile.tx', {
       user_data => \%user_data,
@@ -35,10 +38,9 @@ sub update {
       current => 'profile',
     });
   }
+
   TwitterClone::Repository::Profile->update(%user_data);
-  return $c->redirect("/profile"); #セッションから引っ張ってくる
+  return $c->redirect("/discover"); #セッションから引っ張ってくる
 }
 
 1;
-
-

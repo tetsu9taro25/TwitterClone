@@ -37,9 +37,9 @@
       <div class="side-column">
         <div class="profile-box">
           <div class="name-box">
-            <p class="person-name"><a href="#">ここのか</a></p>
-            <p class="person-id"><a href="#">@kokonoka</a></p>
-            <p class="person-icon"><a href="#"><img src="http://placehold.it/100x100"></a></p>
+            <p class="person-name"><a href="#"><: $user_data.name :></a></p>
+            <p class="person-id"><a href="#">@<: $user_data.screen_name :></a></p>
+            <p class="person-icon"><a href="#"><img src="static/img/<: $user_data.image :>"></a></p>
           </div>
           <div class="post-box">
             <p>どんどんドーナツどーんといこう！</p>

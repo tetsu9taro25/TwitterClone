@@ -7,11 +7,16 @@ use TwitterClone;
 
 sub db { TwitterClone->context->db }
 
-sub fetch_all {
+sub fetch_all_posts {
   my ($class) = @_;
   my @messages =  $class->db->search('message',{deleted => 0},{order_by => 'created_at DESC'});
   $class->parse(@messages);
   return @messages;
+}
+
+sub fetch_user_profile {
+  my ($class, $user_id) = @_;
+  return $class->db->single(user => {id => $user_id});
 }
 
 sub parse {

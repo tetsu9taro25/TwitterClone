@@ -7,7 +7,7 @@
 : if($error_message){
     <p class="error_message"><: $error_message :></p>
 : }
-    <form method="POST" action="/profile">
+    <form method="POST" action="/profile" enctype='multipart/form-data'>
       <p><input name="image" type="file"></p>
       <p class="screen_name">@<: $user_data.screen_name :></p>
       <p><input name="name" type="text" placeholder="ニックネーム" value="<: $user_data.name :>"></p>
