@@ -8,7 +8,7 @@ use TwitterClone::Repository::Login;
 
 sub new {
   my ($class, $c, $args) = @_;
-  my $user_id = $c->session->get( 'user_id' );
+  my $user_id = $c->session->get('user_id');
   my $user_data = TwitterClone::Repository::Login->fetch_by_user_id($user_id);
   my ($screen_name, $password);
   if($user_data){
