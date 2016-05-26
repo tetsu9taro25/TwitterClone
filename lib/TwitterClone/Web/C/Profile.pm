@@ -8,7 +8,7 @@ use TwitterClone::Repository::Profile;
 
 sub new {
   my ($class, $c, $args) = @_;
-  my $user_id = 3; #セッションから引っ張ってくる
+  my $user_id = $c->session->get('user_id') or return $c->redirect("/login");
   my $user_data = TwitterClone::Repository::Profile->fetch_by_user_id($user_id);
 
   return $c->render('profile.tx', {
@@ -20,10 +20,13 @@ sub new {
 
 sub update {
   my ($class, $c, $args) = @_;
+  my $user_id = $c->session->get('user_id') or return $c->redirect("/login");
+  my $user_data = TwitterClone::Repository::Profile->fetch_by_user_id($user_id);
   my $image_path = TwitterClone::Repository::Profile->image_upload($c->req->uploads->{'image'}, $c->base_dir());
+
   my %user_data = (
-    screen_name => 'fa',#セッションから引っ張ってくる
-    id => 3, #セッションから引っ張ってくる
+    screen_name => $user_data->screen_name,
+    id => $user_id,
     name => $c->req->parameters->{name},
     password => $c->req->parameters->{password},
     mail => $c->req->parameters->{mail},
