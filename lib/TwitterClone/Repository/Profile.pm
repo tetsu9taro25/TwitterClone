@@ -21,9 +21,14 @@ sub update {
       password => $params{password},
       mail => $params{mail},
       text => $params{text},
-      image => $params{image},
     },{ id => $params{id} }
   );
+  if($params{image}){
+    $class->db->update(user => {
+        image => $params{image},
+      },{ id => $params{id} }
+    );
+  }
 }
 
 sub image_upload {

@@ -12,6 +12,7 @@
       <p><input name="name" type="text" placeholder="ニックネーム" value="<: $name :>"></p>
       <p><input name="password" type="text" placeholder="パスワード" value="<: $password :>"></p>
       <p class="submit-button"><button type="submit">アカウント作成</button></p>
+      <p class="account-message">既にアカウントをお持ちの方は<a href="/login">こちら。</a></p>
     </form>
   </div>
 </main>

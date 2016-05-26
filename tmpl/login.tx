@@ -7,11 +7,11 @@
 : if($error_message){
     <p class="error_message"><: $error_message :></p>
 : }
-    <form method="POST" action="/signup">
-      <p><input name="screen_name" type="text" placeholder="ID" value="<: $screen_name :>"></p>
-      <p><input name="name" type="text" placeholder="ニックネーム" value="<: $name :>"></p>
+    <form method="POST" action="/login">
+      <p><input name="screen_name" type="text" placeholder="ユーザーID" value="<: $screen_name :>"></p>
       <p><input name="password" type="text" placeholder="パスワード" value="<: $password :>"></p>
-      <p class="submit-button"><button type="submit">アカウント作成</button></p>
+      <p class="submit-button"><button type="submit">ログイン</button></p>
+      <p class="account-message">アカウントをお持ちでない方は<a href="/signup">こちら。</a></p>
     </form>
   </div>
 </main>

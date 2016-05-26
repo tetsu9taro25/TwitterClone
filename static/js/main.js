@@ -59,4 +59,14 @@ $(function(){
     $('.post-box textarea').val('');
     $('.post-box button').addClass('is-disabled');
   });
+
+  $('.prof-icon').hover(
+      function(){
+        $(this).find('.image-message').show();
+      },
+      function(){
+        $(this).find('.image-message').hide();
+      }
+  );
+
 });

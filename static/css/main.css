@@ -231,20 +231,21 @@ header {
       background: #3eb0f7; }
 
 main {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   width: 900px;
   margin: 50px auto; }
+  main:after {
+    content: "";
+    clear: both; }
 
 .side-column {
-  margin-right: auto; }
+  margin-right: auto;
+  float: left; }
   .side-column .profile-box {
     width: 300px;
     border: 1px solid #ccc; }
     .side-column .profile-box .name-box {
       position: relative;
-      padding: 20px 20px 20px 135px;
+      padding: 78px 20px 20px;
       background: #3eb0f7; }
       .side-column .profile-box .name-box p {
         margin: 0;
@@ -254,12 +255,27 @@ main {
       .side-column .profile-box .name-box .person-name {
         font-weight: bold;
         font-size: 1.1rem; }
+      .side-column .profile-box .name-box .person-id {
+        margin-top: 2px; }
       .side-column .profile-box .name-box .person-icon {
         position: absolute;
         top: -30px;
-        left: 20px; }
+        left: 100px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        overflow: hidden; }
         .side-column .profile-box .name-box .person-icon img {
-          border-radius: 50%; }
+          width: 100%; }
+      .side-column .profile-box .name-box .person-comment {
+        margin-top: 5px; }
+    .side-column .profile-box .post-box > p {
+      font-weight: bold; }
+    .side-column .profile-box .post-box textarea {
+      margin-top: 7px; }
+
+.main-column {
+  float: right; }
 
 .feed {
   display: -webkit-box;
@@ -288,12 +304,10 @@ main {
       font-weight: bold; }
       .feed .name-box .person-name a {
         color: inherit; }
-    .feed .name-box .person-id {
-      margin-left: 5px; }
-      .feed .name-box .person-id a {
-        color: #aaa; }
+    .feed .name-box .person-id a {
+      color: #aaa; }
   .feed .post-date {
-    margin-top: 20px;
+    margin-top: 17px;
     color: #aaa; }
   .feed .comment {
     margin-top: 0;
@@ -331,6 +345,33 @@ main {
   text-align: center;
   margin-bottom: 25px; }
 
+.signup .prof-icon, .profile .prof-icon {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ccc;
+  cursor: pointer; }
+  .signup .prof-icon img, .profile .prof-icon img {
+    width: 100%; }
+  .signup .prof-icon .image-message, .profile .prof-icon .image-message {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    font-size: 1.1rem;
+    text-shadow: black 0 0 3px, black 0 0 3px;
+    background: rgba(0, 0, 0, 0.3); }
+    .signup .prof-icon .image-message > span, .profile .prof-icon .image-message > span {
+      position: absolute;
+      top: 87px;
+      left: 30px; }
+
 .signup .screen_name, .profile .screen_name {
   text-align: center; }
 
@@ -348,6 +389,10 @@ main {
     background: #3eb0f7;
     border-radius: 20px;
     color: #fff; }
+
+.signup .account-message, .profile .account-message {
+  text-align: center;
+  margin-top: 25px; }
 
 .signup .error_message, .profile .error_message {
   color: red; }

@@ -7,6 +7,7 @@ use TwitterClone::Web::C::Discover;
 use TwitterClone::Web::C::Message;
 use TwitterClone::Web::C::Signup;
 use TwitterClone::Web::C::Profile;
+use TwitterClone::Web::C::Login;
 
 base 'TwitterClone::Web::C';
 
@@ -22,5 +23,8 @@ post '/signup'    => 'Signup#create';
 
 get '/profile'    => 'Profile#new';
 post '/profile'    => 'Profile#update';
+
+get '/login'    => 'Login#new';
+post '/login'    => 'Login#login';
 
 1;

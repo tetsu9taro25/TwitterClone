@@ -37,12 +37,13 @@
       <div class="side-column">
         <div class="profile-box">
           <div class="name-box">
+            <p class="person-icon"><a href="#"><img src="static/img/<: $user_data.image :>"></a></p>
             <p class="person-name"><a href="#"><: $user_data.name :></a></p>
             <p class="person-id"><a href="#">@<: $user_data.screen_name :></a></p>
-            <p class="person-icon"><a href="#"><img src="static/img/<: $user_data.image :>"></a></p>
+            <p class="person-comment"><: $user_data.text :></p>
           </div>
           <div class="post-box">
-            <p>どんどんドーナツどーんといこう！</p>
+            <p>フィードを投稿する</p>
             <form method="POST" action="/message/new">
               <input type="hidden" name="user_id" value="1" />
               <textarea name="text" placeholder="投稿内容"></textarea>
@@ -61,7 +62,7 @@
           <p class="person-icon"><a href="#"><img src="http://placehold.it/50x50"></a></p>
           <div class="wrapper">
             <div class="name-date-box">
-              <p class="name-box"><span class="person-name"><a href="#">ツル舞うかたちの富山県</a></span><span class="person-id"><a href="#">@okayama</a></span></p>
+              <p class="name-box"><span class="person-name"><a href="#">ツル舞うかたちの富山県</a></span><br><span class="person-id"><a href="#">@okayama</a></span></p>
               <p class="post-date"><: $message.created_at :></p>
             </div>
             <p class="comment"><: $message.text :></p>
