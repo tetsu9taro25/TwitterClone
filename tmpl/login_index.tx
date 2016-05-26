@@ -37,13 +37,13 @@
       <div class="side-column">
         <div class="profile-box">
           <div class="name-box">
-            <p class="person-icon"><a href="#">
+            <a class="person-icon" href="/<: $user_data.screen_name :>">
             : if($user_data.image){
             <img src="static/img/<: $user_data.image :>">
             : }
-            </a></p>
-            <p class="person-name"><a href="#"><: $user_data.name :></a></p>
-            <p class="person-id"><a href="#">@<: $user_data.screen_name :></a></p>
+            </a>
+            <p class="person-name"><a href="/<: $user_data.screen_name :>"><: $user_data.name :></a></p>
+            <p class="person-id"><a href="/<: $user_data.screen_name :>">@<: $user_data.screen_name :></a></p>
             <p class="person-comment"><: $user_data.text :></p>
           </div>
           <div class="post-box">
@@ -63,10 +63,14 @@
 
 : for $messages -> $message {
         <div class="feed">
-          <p class="person-icon"><a href="#"><img src="http://placehold.it/50x50"></a></p>
+          <a class="person-icon" href="/<: $all_user_data[$message.user_id - 1].screen_name :>">
+            : if($all_user_data[$message.user_id - 1].image){
+            <img src="static/img/<: $all_user_data[$message.user_id - 1].image :>">
+            : }
+          </a>
           <div class="wrapper">
             <div class="name-date-box">
-              <p class="name-box"><span class="person-name"><a href="#"><: $all_user_data[$message.user_id - 1].name :></a></span><br><span class="person-id"><a href="#">@<: $all_user_data[$message.user_id - 1].screen_name :></a></span></p>
+              <p class="name-box"><span class="person-name"><a href="/<: $all_user_data[$message.user_id - 1].screen_name :>"><: $all_user_data[$message.user_id - 1].name :></a></span><br><span class="person-id"><a href="/<: $all_user_data[$message.user_id - 1].screen_name :>">@<: $all_user_data[$message.user_id - 1].screen_name :></a></span></p>
               <p class="post-date"><: $message.created_at :></p>
             </div>
             <p class="comment"><: $message.text :></p>
