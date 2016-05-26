@@ -8,11 +8,19 @@ use TwitterClone::Repository::Login;
 
 sub new {
   my ($class, $c, $args) = @_;
-
+  my $user_id = $c->session->get( 'user_id' );
+  my $user_data = TwitterClone::Repository::Login->fetch_by_user_id($user_id);
+  my ($screen_name, $password);
+  if($user_data){
+    $screen_name = $user_data->screen_name;
+    $password = $user_data->password;
+  }else{
+    $screen_name = '';
+    $password = '';
+  }
   return $c->render('login.tx', {
-      screen_name => '',
-      name => '',
-      password => '',
+      screen_name => $screen_name,
+      password => $password,
       error_message => undef,
       current => 'login',
     });
@@ -31,17 +39,17 @@ sub login {
       current => 'login',
     });
   }
-
-  #$c->session->set(
-  #  screen_name => $screen_name,
-  #  password => $password,
-  #);
-
-  #print Dumper "$c->session->get('screen_name')\n";
-  #TwitterClone::Repository::Login->login($screen_name, $password);
-  return $c->redirect("/login");
+  my $user_id = TwitterClone::Repository::Login->identify_user($screen_name,$password);
+  if ($user_id == 0) {
+    return $c->render('login.tx', {
+        screen_name => $screen_name,
+        password => $password,
+        error_message => 'IDまたはパスワードが間違っています',
+        current => 'login',
+      });
+  }
+  $c->session->set( user_id => $user_id );
+  return $c->redirect("/$screen_name");
 }
 
 1;
-
-

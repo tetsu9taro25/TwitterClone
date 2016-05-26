@@ -38,6 +38,9 @@ sub image_upload {
     my $ext = $class->valid_type($upload->content_type);
     if($ext){
       my $src = $upload->tempname;
+
+      print "$src\n";
+
       my $raw_dst = $class->create_filename($ext);
       $base =~ s/script\/\.\./static\/img/;
       my $dst = File::Spec->catfile($base, $raw_dst);
