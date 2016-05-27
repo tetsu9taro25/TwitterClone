@@ -50,6 +50,17 @@ $bg-gray: #dde6ed;
 $main-blue: #3eb0f7;
 $main-red: #f73e54;
 
+@mixin clearfix {
+  &:after {
+    content: ".";
+    display: block;
+    height: 0;
+    font-size:0;
+    clear: both;
+    visibility:hidden;
+  }
+}
+
 .overlay, .overlay-trans {
   display: none;
   position: fixed;
@@ -300,13 +311,9 @@ header {
 }
 
 main {
+  @include clearfix;
   width: 900px;
   margin: 50px auto;
-
-  &:after {
-    content: "";
-    clear: both;
-  }
 }
 
 .side-column {

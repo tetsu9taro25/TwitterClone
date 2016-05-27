@@ -69,4 +69,5 @@ $(function(){
       }
   );
 
+  $('form [name=screen_name]').focus();
 });

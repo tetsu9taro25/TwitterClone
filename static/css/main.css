@@ -234,8 +234,12 @@ main {
   width: 900px;
   margin: 50px auto; }
   main:after {
-    content: "";
-    clear: both; }
+    content: ".";
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+    visibility: hidden; }
 
 .side-column {
   margin-right: auto;
