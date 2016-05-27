@@ -20,23 +20,22 @@ sub new {
 
 sub create {
   my ($class, $c, $args) = @_;
-  my $screen_name = $c->req->parameters->{screen_name};
-  my $name = $c->req->parameters->{name};
-  my $password = $c->req->parameters->{password};
+  my %parameters = (
+    screen_name => $c->req->parameters->{screen_name},
+    name => $c->req->parameters->{name},
+    password => $c->req->parameters->{password},
+    error_message => undef,
+    current => 'signup',
+  );
 
-  if($screen_name eq '' || $name eq '' ||  $password eq ''){
-    return $c->render('signup.tx', {
-      screen_name => $screen_name,
-      name => $name,
-      password => $password,
-      error_message => 'なに空文字入れて送信しとんねんボケ！',
-      current => 'signup',
-    });
+  TwitterClone::Repository::Signup->validate(\%parameters);
+  if($parameters{'error_message'}){
+    return $c->render('signup.tx', \%parameters);
   }
 
-  TwitterClone::Repository::Signup->create($screen_name, $name, $password);
-  return $c->redirect("/$screen_name");
+  my $user_id = TwitterClone::Repository::Signup->create(\%parameters);
+  $c->session->set( user_id => $user_id );
+  return $c->redirect("/" . $parameters{'screen_name'});
 }
 
 1;
-
