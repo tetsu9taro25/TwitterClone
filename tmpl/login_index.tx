@@ -7,7 +7,6 @@
       <p class="modal-title">フィードを投稿する</p>
       <div class="post-box">
         <form method="POST" action="/message/new">
-          <input type="hidden" name="user_id" value="1" />
           <textarea name="text" placeholder="投稿内容"></textarea>
           <button type="submit" class="is-disabled" disabled><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>投稿する</button>
         </form>
@@ -37,19 +36,18 @@
       <div class="side-column">
         <div class="profile-box">
           <div class="name-box">
-            <a class="person-icon" href="/<: $user_data.screen_name :>">
-            : if($user_data.image){
-            <img src="static/img/<: $user_data.image :>">
+            <a class="person-icon" href="/<: $session_user_data.screen_name :>">
+            : if($session_user_data.image){
+            <img src="static/img/<: $session_user_data.image :>">
             : }
             </a>
-            <p class="person-name"><a href="/<: $user_data.screen_name :>"><: $user_data.name :></a></p>
-            <p class="person-id"><a href="/<: $user_data.screen_name :>">@<: $user_data.screen_name :></a></p>
-            <p class="person-comment"><: $user_data.text :></p>
+            <p class="person-name"><a href="/<: $session_user_data.screen_name :>"><: $session_user_data.name :></a></p>
+            <p class="person-id"><a href="/<: $session_user_data.screen_name :>">@<: $session_user_data.screen_name :></a></p>
+            <p class="person-comment"><: $session_user_data.text :></p>
           </div>
           <div class="post-box">
             <p>フィードを投稿する</p>
             <form method="POST" action="/message/new">
-              <input type="hidden" name="user_id" value="1" />
               <textarea name="text" placeholder="投稿内容"></textarea>
               <button type="submit" class="is-disabled" disabled><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>投稿する</button>
             </form>
@@ -63,19 +61,19 @@
 
 : for $messages -> $message {
         <div class="feed">
-          <a class="person-icon" href="/<: $all_user_data[$message.user_id - 1].screen_name :>">
-            : if($all_user_data[$message.user_id - 1].image){
-            <img src="static/img/<: $all_user_data[$message.user_id - 1].image :>">
+          <a class="person-icon" href="/<: $message.screen_name :>">
+            : if($message.user_image){
+            <img src="static/img/<: $message.user_image :>">
             : }
           </a>
           <div class="wrapper">
             <div class="name-date-box">
-              <p class="name-box"><span class="person-name"><a href="/<: $all_user_data[$message.user_id - 1].screen_name :>"><: $all_user_data[$message.user_id - 1].name :></a></span><br><span class="person-id"><a href="/<: $all_user_data[$message.user_id - 1].screen_name :>">@<: $all_user_data[$message.user_id - 1].screen_name :></a></span></p>
+              <p class="name-box"><span class="person-name"><a href="/<: $message.screen_name :>"><: $message.name :></a></span><br><span class="person-id"><a href="/<: $message.screen_name :>">@<: $message.screen_name :></a></span></p>
               <p class="post-date"><: $message.created_at :></p>
             </div>
             <p class="comment"><: $message.text :></p>
             <div class="main-img"><img src="http://placehold.it/450x250"></div>
-            : if($user_data.id == $message.user_id){
+            : if($session_user_data.id == $message.user_id){
             <div class="command-box" data-message-id="<: $message.id :>" >
               <p class="reply"><button><i class="fa fa-lg fa-share" aria-hidden="true"></i>返信</button></p>
               <p class="delete"><button><i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>削除</button></p>

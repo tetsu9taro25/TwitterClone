@@ -22,12 +22,12 @@
     <header>
       <div class="wrapper">
         <nav>
-          <a href="/{screen_name}"
+          <a href="/<: $session_user_data.screen_name :>"
             : if $current == "home" {
             class="is-current"
             : }
             ><i class="fa fa-lg fa-home" aria-hidden="true"></i>ホーム</a>
-          <a href="/{screen_name}/mentions"
+          <a href="/<: $session_user_data.screen_name :>/mentions"
             : if $current == "mentions" {
             class="is-current"
             : }

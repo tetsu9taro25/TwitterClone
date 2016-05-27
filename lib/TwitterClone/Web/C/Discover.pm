@@ -6,25 +6,18 @@ use Data::Dumper;
 
 use TwitterClone::Repository::Discover;
 
-sub home {
-  my ($class, $c, $args) = @_;
-  return $c->render('index.tx', {
-      current => 'home',
-    });
-}
+sub show {
+  my ($class, $c) = @_;
 
-sub index {
-  my ($class, $c, $args) = @_;
   my @messages = TwitterClone::Repository::Discover->fetch_all_posts;
-  my @all_user_data = TwitterClone::Repository::Discover->fetch_all_user_data;
-  my $user_id = $c->session->get('user_id') or return $c->redirect("/login");
-  my $user_data = TwitterClone::Repository::Discover->fetch_user_profile($user_id);
+  my $session_user_id = $c->session->get('user_id') or return $c->redirect("/login");
+  my $session_user_data = TwitterClone::Repository::Discover->fetch_user_profile($session_user_id);
   return $c->render('login_index.tx', {
       messages => \@messages,
-      all_user_data => \@all_user_data,
-      user_data => $user_data,
+      session_user_data => $session_user_data,
       current => 'discover',
     });
+  #print Dumper @messages;
 }
 
 1;
