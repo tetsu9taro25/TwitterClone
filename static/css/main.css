@@ -282,6 +282,9 @@ main {
 
 .main-column {
   float: right; }
+  .main-column .no-message {
+    margin: 60px 200px 0 0;
+    color: #aaa; }
 
 .feed {
   display: -webkit-box;

@@ -1,6 +1,7 @@
 : cascade "include/login_layout.tx"
 : override content -> {
 
+<div class="overlay-trans"></div>
 <main class="profile">
   <div class="form-area">
     <h1>プロフィール編集</h1>
@@ -8,18 +9,18 @@
     <p class="error_message"><: $error_message :></p>
 : }
     <form method="POST" action="/profile" enctype='multipart/form-data'>
-      <p class="screen_name">@<: $user_data.screen_name :></p>
+      <p class="screen_name">@<: $session_user_data.screen_name :></p>
       <label>
         <div class="prof-icon">
-          <div><img src="static/img/<: $user_data.image :>"></div>
-          <div class="image-message"><span><i class="fa fa-camera" value="<: $user_data.image :>" aria-hidden="true"></i>画像を変更する</span></div>
+          <div><img src="static/img/<: $session_user_data.image :>"></div>
+          <div class="image-message"><span><i class="fa fa-camera" value="<: $session_user_data.image :>" aria-hidden="true"></i>画像を変更する</span></div>
         </div>
         <p><input name="image" type="file" hidden></p>
       </label>
-      <p><input name="name" type="text" placeholder="ニックネーム" value="<: $user_data.name :>"></p>
-      <p><input name="password" type="text" placeholder="パスワード" value="<: $user_data.password :>"></p>
-      <p><input name="mail" type="text" placeholder="メールアドレス" value="<: $user_data.mail :>"></p>
-      <p><textarea name="text" placeholder="一言コメント" ><: $user_data.text :></textarea></p>
+      <p><input name="name" type="text" placeholder="ニックネーム" value="<: $session_user_data.name :>"></p>
+      <p><input name="password" type="text" placeholder="パスワード" value="<: $session_user_data.password :>"></p>
+      <p><input name="mail" type="text" placeholder="メールアドレス" value="<: $session_user_data.mail :>"></p>
+      <p><textarea name="text" placeholder="一言コメント" ><: $session_user_data.text :></textarea></p>
       <p class="submit-button"><button type="submit">プロフィール更新</button></p>
     </form>
   </div>

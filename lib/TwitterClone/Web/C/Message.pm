@@ -14,10 +14,10 @@ sub create {
   my $screen_name = TwitterClone::Repository::Message->fetch_screen_name($user_id);
   my $text = $c->req->parameters->{text}
     or return $c->res_404;
+  my @mention_ids = TwitterClone::Repository::Message->check_mention($text);
 
-  my $message_id = TwitterClone::Repository::Message->create($user_id, $text);
-
-  return $c->redirect("/$screen_name");
+  my $message_id = TwitterClone::Repository::Message->create($user_id, $text, @mention_ids);
+  return $c->redirect($c->req->headers->referer);
 }
 
 sub edit {
@@ -27,11 +27,11 @@ sub edit {
   my $screen_name = TwitterClone::Repository::Message->fetch_screen_name($user_id);
   my $old_message = TwitterClone::Repository::Message->fetch_by_id($message_id) or return $c->res_404;
   TwitterClone::Repository::Message->validate($user_id, $old_message->user_id) or return $c->res_403;
-
   my $text = $c->req->parameters->{text} or return $c->res_404;
-  TwitterClone::Repository::Message->update($message_id, $text);
+  my @mention_ids = TwitterClone::Repository::Message->check_mention($text);
 
-  return $c->redirect("/$screen_name");
+  TwitterClone::Repository::Message->update($message_id, $text, @mention_ids);
+  return $c->redirect($c->req->headers->referer);
 }
 
 sub delete {
@@ -43,8 +43,7 @@ sub delete {
   TwitterClone::Repository::Message->validate($user_id, $old_message->user_id) or return $c->res_403;
 
   TwitterClone::Repository::Message->delete($message_id);
-
-  return $c->redirect("/$screen_name");
+  return $c->redirect($c->req->headers->referer);
 }
 
 1;

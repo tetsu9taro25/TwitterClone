@@ -1,4 +1,4 @@
-package TwitterClone::Repository::ScreenName;
+package TwitterClone::Repository::Mention;
 use strict;
 use warnings;
 use utf8;
@@ -8,9 +8,9 @@ use TwitterClone;
 sub db { TwitterClone->context->db }
 
 sub fetch_screen_name_posts {
-  my ($class, $screen_name) = @_;
+  my ($class, $user_id) = @_;
 
-  my $itr = $class->db->search_named(q{select message.id, message.user_id, message.text, message.image as message_image, message.mention, message.deleted, message.created_at, user.screen_name, user.name, user.image as user_image from message inner join user on message.user_id = user.id  where user.screen_name = :screen_name and message.deleted = :num order by created_at desc}, {screen_name => $screen_name, num => 0});
+  my $itr = $class->db->search_named(q{select message.id, message.user_id, message.text, message.image as message_image, message.mention, message.deleted, message.created_at, user.screen_name, user.name, user.image as user_image from message inner join user on message.user_id = user.id  where message.mention = :user_id and message.deleted = :num order by created_at desc}, {user_id => $user_id, num => 0});
   my @messages = $itr->all;
   $class->parse(@messages);
   return @messages;
@@ -36,4 +36,3 @@ sub parse {
 }
 
 1;
-

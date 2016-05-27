@@ -15,15 +15,15 @@ sub fetch_by_id {
 }
 
 sub create {
-  my ($class, $user_id, $text) = @_;
+  my ($class, $user_id, $text, @mention_ids) = @_;
 
-  my $message_id = $class->db->fast_insert(message => {user_id => $user_id, text => $text});
+  my $message_id = $class->db->fast_insert(message => {user_id => $user_id, text => $text });
 
   return $message_id;
 }
 
 sub update {
-  my ($class, $message_id, $text) = @_;
+  my ($class, $message_id, $text, @mention_ids) = @_;
 
   $class->db->update(message => {text => $text}, {id => $message_id});
 }
@@ -43,6 +43,28 @@ sub fetch_screen_name {
   my ($class, $user_id) = @_;
   my $row = $class->db->single(user => {id => $user_id});
   return $row->screen_name;
+}
+
+sub redirect_to {
+  my ($class, $ref, $screen_name) = @_;
+  if($ref =~ m|mentions|){ $ref = $screen_name;}
+  print $ref . "\n";
+  return $ref;
+}
+
+sub check_mention {
+  my ($class, $text) = @_;
+  my @segments = split(/\s/, $text);
+  my @ids;
+  for (@segments) {
+    if($_ =~ /^@/){
+      $_ =~ s/@//;
+      my $row = $class->db->single(user => {screen_name => $_});
+      push(@ids, $row->id);
+      print $row->id . "\n";
+    }
+  }
+  return @ids;
 }
 
 1;

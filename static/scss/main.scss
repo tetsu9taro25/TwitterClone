@@ -384,6 +384,11 @@ main {
 
 .main-column {
   float: right;
+
+  .no-message {
+    margin: 60px 200px 0 0;
+    color: $main-gray;
+  }
 }
 
 .feed {

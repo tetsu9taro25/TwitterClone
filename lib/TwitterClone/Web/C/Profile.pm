@@ -9,10 +9,10 @@ use TwitterClone::Repository::Profile;
 sub new {
   my ($class, $c, $args) = @_;
   my $user_id = $c->session->get('user_id') or return $c->redirect("/login");
-  my $user_data = TwitterClone::Repository::Profile->fetch_by_user_id($user_id);
+  my $session_user_data = TwitterClone::Repository::Profile->fetch_by_user_id($user_id);
 
   return $c->render('profile.tx', {
-      user_data => $user_data,
+      session_user_data => $session_user_data,
       error_message => undef,
       current => 'profile',
     });

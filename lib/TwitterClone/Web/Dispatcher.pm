@@ -5,6 +5,7 @@ use utf8;
 use Amon2::Web::Dispatcher::RouterBoom;
 use TwitterClone::Web::C::Home;
 use TwitterClone::Web::C::Discover;
+use TwitterClone::Web::C::Mention;
 use TwitterClone::Web::C::ScreenName;
 use TwitterClone::Web::C::Message;
 use TwitterClone::Web::C::Signup;
@@ -34,4 +35,6 @@ post '/login'    => 'Login#login';
 get '/logout'    => 'Logout#new';
 
 get  '/:screen_name'    => 'ScreenName#show';
+
+get  '/:screen_name/mentions'    => 'Mention#show';
 1;
