@@ -39,4 +39,10 @@ sub validate {
   return $user_id == $writer ? 1 : undef;
 }
 
+sub fetch_screen_name {
+  my ($class, $user_id) = @_;
+  my $row = $class->db->single(user => {id => $user_id});
+  return $row->screen_name;
+}
+
 1;
