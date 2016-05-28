@@ -34,6 +34,7 @@ sub create {
   }
 
   my $user_id = TwitterClone::Repository::Signup->create(\%parameters);
+  print Dumper $user_id. "\n";
   $c->session->set( user_id => $user_id );
   return $c->redirect("/" . $parameters{'screen_name'});
 }

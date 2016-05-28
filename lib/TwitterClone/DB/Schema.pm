@@ -14,8 +14,6 @@ table {
   id
   user_id
   text
-  image
-  mention
   deleted
   created_at
   updated_at
@@ -50,5 +48,24 @@ table {
   );
 };
 
+table {
+  name 'mention';
+  pk 'id';
+  columns qw(
+  id
+  message_id
+  mention
+  );
+};
+
+table {
+  name 'message_image';
+  pk 'id';
+  columns qw(
+  id
+  message_id
+  image
+  );
+};
 
 1;
