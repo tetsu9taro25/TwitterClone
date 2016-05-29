@@ -82,7 +82,7 @@
         <div class="feed">
           <a class="person-icon" href="/<: $message.screen_name :>">
             : if($message.user_image){
-            <img src="static/img/<: $message.user_image :>">
+            <img src="/static/img/<: $message.user_image :>">
             : }
           </a>
           <div class="wrapper">

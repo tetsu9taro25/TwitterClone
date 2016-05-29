@@ -90,13 +90,13 @@ p {
     resize: vertical;
     border: 1px solid #ccc; }
   .post-box .output-image {
-    width: 100%;
+    max-width: 100%;
     border: 1px solid #ccc; }
   .post-box .main-img {
     margin-top: 10px;
     cursor: pointer; }
     .post-box .main-img img {
-      width: 100%;
+      max-width: 100%;
       border: 1px solid #ccc; }
   .post-box .output-image-box {
     display: none;
@@ -427,3 +427,12 @@ main {
 
 .signup .error_message, .profile .error_message {
   color: red; }
+
+.index-colmun {
+  margin-top: 30px; }
+
+.index-explain {
+  text-align: center; }
+
+h3.index-explain {
+  margin-top: 40px; }

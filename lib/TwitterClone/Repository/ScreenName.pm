@@ -4,6 +4,7 @@ use warnings;
 use utf8;
 use Data::Dumper;
 use TwitterClone;
+use TwitterClone::Repository::Helper;
 
 sub db { TwitterClone->context->db }
 
@@ -25,27 +26,13 @@ sub fetch_screen_name_posts {
     order by created_at desc},
     {screen_name => $screen_name, num => 0});
   my @messages = $itr->all;
-  $class->parse(@messages);
+  TwitterClone::Repository::Helper->parse(@messages);
   return @messages;
 }
 
 sub fetch_user_profile {
   my ($class, $user_id) = @_;
   return $class->db->single(user => {id => $user_id});
-}
-
-sub parse {
-  my ($class, @messages) = @_;
-
-  for (my $i = 0; $i <= $#messages; $i++){
-    my $date = $messages[$i]->{row_data}->{created_at};
-    $date =~ s/-/年/;
-    $date =~ s/-/月/;
-    $date =~ s/ /日 /;
-    my @list = split(/:/, $date);
-    my $new_date = $list[0] . ":" .  $list[1] . "\n";
-    $messages[$i]->{row_data}->{created_at} = $new_date;
-  }
 }
 
 1;

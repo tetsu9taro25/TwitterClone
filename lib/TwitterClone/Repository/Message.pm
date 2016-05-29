@@ -23,6 +23,13 @@ sub create {
       image => $image_path,
     });
 
+  for(@mention_ids){
+    $class->db->fast_insert(mention => {
+        message_id => $message_id,
+        mention => $_,
+      });
+  }
+
   return $message_id;
 }
 
@@ -33,6 +40,16 @@ sub update {
       text => $text,
       image => $image_path,
     }, {id => $message_id});
+
+  $class->db->delete('mention', {
+      message_id => $message_id
+    });
+  for(@mention_ids){
+    $class->db->fast_insert(mention => {
+        message_id => $message_id,
+        mention => $_,
+      });
+  }
 }
 
 sub delete {
@@ -68,10 +85,12 @@ sub check_mention {
       $_ =~ s/@//;
       my $row = $class->db->single(user => {screen_name => $_});
       push(@ids, $row->id);
-      print $row->id . "\n";
     }
   }
   return @ids;
+}
+
+sub insert_mention {
 }
 
 1;

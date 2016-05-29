@@ -1,4 +1,4 @@
-package TwitterClone::Repository::Discover;
+package TwitterClone::Repository::Home;
 use strict;
 use warnings;
 use utf8;
@@ -8,7 +8,7 @@ use TwitterClone::Repository::Helper;
 
 sub db { TwitterClone->context->db }
 
-sub fetch_all_posts {
+sub fetch_sample_posts {
   my ($class) = @_;
 
   my $itr = $class->db->search_named(q{select
@@ -22,16 +22,11 @@ sub fetch_all_posts {
     user.name,
     user.image as user_image
     from message inner join user on message.user_id = user.id
-    where message.deleted = :num
+    where user.image is not null and message.image is not null and message.deleted = :num
     order by created_at desc}, {num => 0});
-  my @messages = $itr->all;
+  my @messages = $itr->next;
   TwitterClone::Repository::Helper->parse(@messages);
   return @messages;
-}
-
-sub fetch_user_profile {
-  my ($class, $user_id) = @_;
-  return $class->db->single(user => {id => $user_id});
 }
 
 1;

@@ -4,11 +4,20 @@ use warnings;
 use utf8;
 use Data::Dumper;
 use TwitterClone;
+use TwitterClone::Repository::Helper;
 
 sub db { TwitterClone->context->db }
 
 sub fetch_screen_name_posts {
   my ($class, $user_id) = @_;
+
+  my @mentioned_messages = $class->db->search('mention',{
+      mention => $user_id,
+    });
+  my @mentioned_message_id;
+  for(@mentioned_messages){
+    push(@mentioned_message_id,$_->message_id);
+  }
 
   my $itr = $class->db->search_named(q{select
     message.id,
@@ -21,30 +30,20 @@ sub fetch_screen_name_posts {
     user.name,
     user.image as user_image
     from message inner join user on message.user_id = user.id
-    where message.deleted = :num
-    order by created_at desc}, {num => 0});
+    where message.id in :ids and message.deleted = :num
+    order by created_at desc}, {
+      ids => [@mentioned_message_id],
+      num => 0,
+    });
+
   my @messages = $itr->all;
-  $class->parse(@messages);
+  TwitterClone::Repository::Helper->parse(@messages);
   return @messages;
 }
 
 sub fetch_user_profile {
   my ($class, $user_id) = @_;
   return $class->db->single(user => {id => $user_id});
-}
-
-sub parse {
-  my ($class, @messages) = @_;
-
-  for (my $i = 0; $i <= $#messages; $i++){
-    my $date = $messages[$i]->{row_data}->{created_at};
-    $date =~ s/-/年/;
-    $date =~ s/-/月/;
-    $date =~ s/ /日 /;
-    my @list = split(/:/, $date);
-    my $new_date = $list[0] . ":" .  $list[1] . "\n";
-    $messages[$i]->{row_data}->{created_at} = $new_date;
-  }
 }
 
 1;
