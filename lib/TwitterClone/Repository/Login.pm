@@ -20,9 +20,4 @@ sub identify_user {
   return $user_data->id;
 }
 
-sub fetch_by_user_id {
-  my ($class, $user_id) = @_;
-  return $class->db->single(user => {id => $user_id});
-}
-
 1;

@@ -29,9 +29,4 @@ sub fetch_all_posts {
   return @messages;
 }
 
-sub fetch_user_profile {
-  my ($class, $user_id) = @_;
-  return $class->db->single(user => {id => $user_id});
-}
-
 1;

@@ -4,12 +4,13 @@ use warnings;
 use utf8;
 use Data::Dumper;
 
+use TwitterClone::Repository::UserData;
 use TwitterClone::Repository::Login;
 
 sub new {
   my ($class, $c, $args) = @_;
   my $user_id = $c->session->get('user_id');
-  my $user_data = TwitterClone::Repository::Login->fetch_by_user_id($user_id);
+  my $user_data = TwitterClone::Repository::UserData->fetch_user_profile($user_id);
   my ($screen_name, $password);
   if($user_data){
     $screen_name = $user_data->screen_name;

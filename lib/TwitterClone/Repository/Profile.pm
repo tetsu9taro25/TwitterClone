@@ -6,11 +6,6 @@ use TwitterClone;
 
 sub db { TwitterClone->context->db }
 
-sub fetch_by_user_id {
-  my ($class, $user_id) = @_;
-  return $class->db->single(user => {id => $user_id});
-}
-
 sub update {
   my ($class, %params) = @_;
 

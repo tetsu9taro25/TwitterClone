@@ -90,7 +90,4 @@ sub check_mention {
   return @ids;
 }
 
-sub insert_mention {
-}
-
 1;
