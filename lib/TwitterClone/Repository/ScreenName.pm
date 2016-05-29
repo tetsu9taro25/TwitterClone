@@ -14,6 +14,7 @@ sub fetch_screen_name_posts {
     message.id,
     message.user_id,
     message.text,
+    message.image as message_image,
     message.deleted,
     message.created_at,
     user.screen_name,

@@ -14,6 +14,7 @@ table {
   id
   user_id
   text
+  image
   deleted
   created_at
   updated_at
@@ -55,16 +56,6 @@ table {
   id
   message_id
   mention
-  );
-};
-
-table {
-  name 'message_image';
-  pk 'id';
-  columns qw(
-  id
-  message_id
-  image
   );
 };
 

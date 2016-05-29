@@ -15,17 +15,24 @@ sub fetch_by_id {
 }
 
 sub create {
-  my ($class, $user_id, $text, @mention_ids) = @_;
+  my ($class, $user_id, $text, $image_path, @mention_ids) = @_;
 
-  my $message_id = $class->db->fast_insert(message => {user_id => $user_id, text => $text });
+  my $message_id = $class->db->fast_insert(message => {
+      user_id => $user_id,
+      text => $text,
+      image => $image_path,
+    });
 
   return $message_id;
 }
 
 sub update {
-  my ($class, $message_id, $text, @mention_ids) = @_;
+  my ($class, $message_id, $text, $image_path, @mention_ids) = @_;
 
-  $class->db->update(message => {text => $text}, {id => $message_id});
+  $class->db->update(message => {
+      text => $text,
+      image => $image_path,
+    }, {id => $message_id});
 }
 
 sub delete {

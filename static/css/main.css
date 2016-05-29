@@ -56,11 +56,12 @@ p {
 .modal-body {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 400px;
-  margin: 250px -webkit-calc(50% - 200px);
-  margin: 250px calc(50% - 200px);
   z-index: 20; }
   .modal-body .close {
     position: absolute;
@@ -86,8 +87,25 @@ p {
     width: 100%;
     margin-top: 20px;
     padding: 7px;
-    resize: none;
+    resize: vertical;
     border: 1px solid #ccc; }
+  .post-box .output-image {
+    width: 100%;
+    border: 1px solid #ccc; }
+  .post-box .main-img {
+    margin-top: 10px;
+    cursor: pointer; }
+    .post-box .main-img img {
+      width: 100%;
+      border: 1px solid #ccc; }
+  .post-box .output-image-box {
+    display: none;
+    margin-top: 10px;
+    cursor: pointer; }
+  .post-box .camera-icon {
+    float: left;
+    margin-top: 22px;
+    cursor: pointer; }
   .post-box button {
     float: right;
     margin-top: 20px;
@@ -297,7 +315,8 @@ main {
   overflow: hidden;
   border: 1px solid #ccc; }
   .feed .wrapper {
-    word-break: break-all; }
+    word-break: break-all;
+    width: 450px; }
   .feed .person-icon {
     display: block;
     margin: 10px 10px 0 0;
@@ -329,12 +348,9 @@ main {
     word-wrap: break-word; }
     .feed .comment > a:hover {
       text-decoration: underline; }
-  .feed .main-img {
-    height: 100px;
-    overflow: hidden;
-    border: 1px solid #aaa; }
-    .feed .main-img img {
-      width: 100%; }
+  .feed .main-img img {
+    max-width: 100%;
+    border: 1px solid #ccc; }
   .feed .command-box {
     overflow: hidden; }
     .feed .command-box button {

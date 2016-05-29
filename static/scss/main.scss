@@ -79,10 +79,10 @@ $main-red: #f73e54;
 .modal-body {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
   width: 400px;
-  margin: 250px calc(50% - 200px);
   z-index: 20;
 
   .close {
@@ -118,8 +118,35 @@ $main-red: #f73e54;
     width: 100%;
     margin-top: 20px;
     padding: 7px;
-    resize: none;
+    resize: vertical;
     border: 1px solid $thin-gray;
+  }
+
+  .output-image {
+    width: 100%;
+    border: 1px solid $thin-gray;
+  }
+
+  .main-img {
+    margin-top: 10px;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+      border: 1px solid $thin-gray;
+    }
+  }
+
+  .output-image-box {
+    display: none;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .camera-icon {
+    float: left;
+    margin-top: 22px;
+    cursor: pointer;
   }
 
   button {
@@ -402,6 +429,7 @@ main {
 
   .wrapper {
     word-break : break-all;
+    width: 450px;
   }
 
   .person-icon {
@@ -457,12 +485,12 @@ main {
   }
 
   .main-img {
-    height: 100px;
-    overflow: hidden;
-    border: 1px solid $main-gray;
+    //height: 100px;
+    //overflow: hidden;
 
     img {
-      width: 100%;
+      max-width: 100%;
+      border: 1px solid $thin-gray;
     }
   }
 
