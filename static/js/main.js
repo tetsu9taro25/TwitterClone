@@ -57,6 +57,8 @@ $(function(){
     setTimeout(function(){
       $('.post-box textarea').val('');
       $('.post-box .main-img').empty();
+      $('.post-modal .output-image').attr('src','');
+      $('.post-modal .output-image-box').hide();
     },200);
     $('.post-box button').addClass('is-disabled');
   });
@@ -72,6 +74,8 @@ $(function(){
     setTimeout(function(){
       $('.post-box textarea').val('');
       $('.post-box .main-img').empty();
+      $('.post-modal .output-image').attr('src','');
+      $('.post-modal .output-image-box').hide();
     },200);
     $('.post-box button').addClass('is-disabled');
   });

@@ -3,7 +3,7 @@
 
 <main class="signup">
   <div class="form-area">
-    <h1>TwitterCloneにログイン！</h1>
+    <h1>Twitter<i class="fa fa-lg fa-twitter " aria-hidden="true" style="margin: 0 !important;"></i>Cloneにログイン！</h1>
 : if($error_message){
     <p class="error_message"><: $error_message :></p>
 : }

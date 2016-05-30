@@ -72,7 +72,6 @@ sub fetch_screen_name {
 sub redirect_to {
   my ($class, $ref, $screen_name) = @_;
   if($ref =~ m|mentions|){ $ref = $screen_name;}
-  print $ref . "\n";
   return $ref;
 }
 

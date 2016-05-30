@@ -157,6 +157,9 @@ header {
         border-bottom: 4px solid transparent; }
         header .wrapper nav a:hover {
           border-bottom: 4px solid #3eb0f7; }
+          header .wrapper nav a:hover .fa-twitter {
+            -webkit-transform: rotateY(180deg);
+                    transform: rotateY(180deg); }
       header .wrapper nav .is-current {
         border-bottom: 4px solid #3eb0f7; }
     header .wrapper .search-input {

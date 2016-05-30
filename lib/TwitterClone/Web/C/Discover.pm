@@ -19,7 +19,6 @@ sub show {
       session_user_data => $session_user_data,
       current => 'discover',
     });
-  #print Dumper @messages;
 }
 
 1;
