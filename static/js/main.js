@@ -51,10 +51,17 @@ $(function(){
     }
   });
 
+  $('.overlay-trans').click(function(){
+    $(this).hide();
+    $('.cog-menu').fadeToggle(200);
+  });
+
   $('.overlay').click(function(){
     $(this).fadeOut(200);
     $('.modal-body').fadeOut(200);
     setTimeout(function(){
+      $('.post-box .input-image').remove();
+      $('.post-box label').append('<input name="image" type="file" class="input-image" hidden>');
       $('.post-box textarea').val('');
       $('.post-box .main-img').empty();
       $('.post-modal .output-image').attr('src','');
@@ -63,15 +70,12 @@ $(function(){
     $('.post-box button').addClass('is-disabled');
   });
 
-  $('.overlay-trans').click(function(){
-    $(this).hide();
-    $('.cog-menu').fadeToggle(200);
-  });
-
   $('.close').click(function(){
     $('.overlay').fadeOut(200);
     $('.modal-body').fadeOut(200);
     setTimeout(function(){
+      $('.post-box .input-image').remove();
+      $('.post-box label').append('<input name="image" type="file" class="input-image" hidden>');
       $('.post-box textarea').val('');
       $('.post-box .main-img').empty();
       $('.post-modal .output-image').attr('src','');
@@ -91,8 +95,8 @@ $(function(){
 
   $('form [name=screen_name]').focus();
 
-  $('.input-image.prof').change(function(){
-    var selectedFile = this.files[0] ;
+  $('.side-colmun').on('change',$('.side-colmun .input-image.prof'),function(event){
+    var selectedFile = event.target.files[0] ;
     var fileReader = new FileReader() ;
     fileReader.onload = function(event) {
       var dataUri = event.target.result ;
@@ -101,8 +105,8 @@ $(function(){
     fileReader.readAsDataURL( selectedFile ) ;
   });
 
-  $('.post-modal .input-image').change(function(){
-    var selectedFile = this.files[0] ;
+  $('.post-modal').on('change',$('.post-modal .input-image'),function(event){
+    var selectedFile = event.target.files[0] ;
     var fileReader = new FileReader() ;
     fileReader.onload = function(event) {
       var dataUri = event.target.result ;
@@ -112,18 +116,22 @@ $(function(){
     fileReader.readAsDataURL( selectedFile ) ;
   });
 
-  $('.edit-modal .input-image').change(function(){
-    var selectedFile = this.files[0] ;
+  $('.edit-modal').on('change',$('.edit-modal .input-image'),function(event){
+    var selectedFile = event.target.files[0] ;
     var fileReader = new FileReader() ;
     fileReader.onload = function(event) {
       var dataUri = event.target.result ;
-      $('.edit-modal .output-image').attr('src',dataUri);
+      if($('.edit-modal .output-image').length){
+        $('.edit-modal .output-image').attr('src',dataUri);
+      }else{
+        $('.edit-modal .main-img').append('<img src="' + dataUri + '" class="output-image">');
+      }
     };
     fileReader.readAsDataURL( selectedFile ) ;
   });
 
-  $('.side-column .input-image').change(function(){
-    var selectedFile = this.files[0] ;
+  $('.side-column').on('change',$('.side-column .input-image'),function(event){
+    var selectedFile = event.target.files[0] ;
     var fileReader = new FileReader() ;
     fileReader.onload = function(event) {
       var dataUri = event.target.result ;

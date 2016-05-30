@@ -36,10 +36,16 @@ sub create {
 sub update {
   my ($class, $message_id, $text, $image_path, @mention_ids) = @_;
 
-  $class->db->update(message => {
-      text => $text,
-      image => $image_path,
-    }, {id => $message_id});
+  if($image_path){
+    $class->db->update(message => {
+        text => $text,
+        image => $image_path,
+      }, {id => $message_id});
+  }else{
+    $class->db->update(message => {
+        text => $text,
+      }, {id => $message_id});
+  }
 
   $class->db->delete('mention', {
       message_id => $message_id

@@ -26,7 +26,7 @@
           <label>
             <div class="main-img"></div>
             <p class="camera-icon"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></p>
-            <input name="image" type="file" class="input-image side-new" hidden>
+            <input name="image" type="file" class="input-image" hidden>
           </label>
           <button type="submit"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>更新</button>
         </form>
@@ -61,9 +61,9 @@
             <form method="POST" action="/message/new" enctype="multipart/form-data">
               <textarea name="text" placeholder="投稿内容"></textarea>
               <label>
-                <div class="output-image-box side-new"><img src="" class="output-image"></div>
+                <div class="output-image-box"><img src="" class="output-image"></div>
                 <p class="camera-icon"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></p>
-                <input name="image" type="file" class="input-image side-new" hidden>
+                <input name="image" type="file" class="input-image" hidden>
               </label>
               <button type="submit" class="is-disabled" disabled><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>投稿する</button>
             </form>
