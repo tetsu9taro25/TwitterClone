@@ -19,6 +19,10 @@ sub fetch_screen_name_posts {
     push(@mentioned_message_id,$_->message_id);
   }
 
+  if(@mentioned_message_id==0){
+    push(@mentioned_message_id,0);
+  }
+
   my $itr = $class->db->search_named(q{select
     message.id,
     message.user_id,
