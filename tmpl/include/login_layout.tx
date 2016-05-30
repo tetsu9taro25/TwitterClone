@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>TwitterClone</title>
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" />
+    <script src="<: uri_for('/static/js/vendor/jquery-2.1.1.min.js') :>"></script>
+    <script src="<: uri_for('/static/js/vendor/xsrf-token.js') :>"></script>
+    <link href="<: static_file('/static/css/main.css') :>" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<: static_file('/static/font-awesome/css/font-awesome.min.css') :>" rel="stylesheet" type="text/css" media="screen" />
+    <script src="<: static_file('/static/js/main.js') :>"></script>
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <header>
+      <div class="wrapper">
+        <nav>
+          <a href="/<: $session_user_data.screen_name :>"
+            : if $current == "home" {
+            class="is-current"
+            : }
+            ><i class="fa fa-lg fa-home" aria-hidden="true"></i>ホーム</a>
+          <a href="/<: $session_user_data.screen_name :>/mentions"
+            : if $current == "mentions" {
+            class="is-current"
+            : }
+            ><i class="fa fa-lg fa-at" aria-hidden="true"></i>メンション</a>
+          <a href="/discover"
+            : if $current == "discover" {
+            class="is-current"
+            : }
+            ><i class="fa fa-lg fa-comments-o" aria-hidden="true"></i>すべての投稿</a>
+        </nav>
+        : if($current != "profile"){
+        <form class="search-input">
+          <input placeholder="検索">
+          <i class="fa fa-search" aria-hidden="true"></i>
+        </form>
+        : }
+        <div class="cog-wrapper">
+          <button class="cog-btn"><i class="fa fa-2x fa-cog" aria-hidden="true"></i></button>
+          <div class="cog-menu">
+        : if($current != "profile"){
+            <p><a href="/profile"><i class="fa fa-fw fa-user" aria-hidden="true"></i>プロフィール編集</a></p>
+        : }
+            <p><a href="/logout"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i>ログアウト</a></p>
+          </div>
+        </div>
+        : if($current != "profile"){
+        <button class="post-btn"><i class="fa fa-lg fa-pencil-square-o" aria-hidden="true"></i></button>
+        : }
+      </div>
+    </header>
+  <: block content -> { } :>
+</body>
+</html>

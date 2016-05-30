@@ -1,0 +1,109 @@
+: cascade "include/login_layout.tx"
+: override content -> {
+    <div class="overlay"></div>
+    <div class="overlay-trans"></div>
+    <div class="post-modal modal-body">
+      <button class="close"><i class="fa fa-lg fa-times" aria-hidden="true"></i></button>
+      <p class="modal-title">フィードを投稿する</p>
+      <div class="post-box">
+        <form method="POST" action="/message/new" enctype="multipart/form-data">
+          <textarea name="text" placeholder="投稿内容"></textarea>
+          <label>
+            <div class="output-image-box"><img src="" class="output-image"></div>
+            <p class="camera-icon"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></p>
+            <input name="image" type="file" class="input-image" hidden>
+          </label>
+          <button type="submit" class="is-disabled" disabled><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>投稿する</button>
+        </form>
+      </div>
+    </div>
+    <div class="edit-modal modal-body">
+      <button class="close"><i class="fa fa-lg fa-times" aria-hidden="true"></i></button>
+      <p class="modal-title">フィードを編集する</p>
+      <div class="post-box">
+        <form method="POST" action="" enctype="multipart/form-data">
+          <textarea name="text" placeholder="投稿内容"></textarea>
+          <label>
+            <div class="main-img"></div>
+            <p class="camera-icon"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></p>
+            <input name="image" type="file" class="input-image side-new" hidden>
+          </label>
+          <button type="submit"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>更新</button>
+        </form>
+      </div>
+    </div>
+    <div class="delete-modal modal-body">
+      <button class="close"><i class="fa fa-lg fa-times" aria-hidden="true"></i></button>
+      <p class="modal-title">このフィードを本当に削除しますか？</p>
+      <div class="post-box">
+        <p class="feed-desc"></p>
+        <div class="main-img"></div>
+        <form method="POST" action="">
+          <button type="submit"><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>削除</button>
+        </form>
+      </div>
+    </div>
+    <main>
+      <div class="side-column">
+        <div class="profile-box">
+          <div class="name-box">
+            <a class="person-icon" href="/<: $session_user_data.screen_name :>">
+            : if($session_user_data.image){
+            <img src="/static/img/<: $session_user_data.image :>">
+            : }
+            </a>
+            <p class="person-name"><a href="/<: $session_user_data.screen_name :>"><: $session_user_data.name :></a></p>
+            <p class="person-id"><a href="/<: $session_user_data.screen_name :>">@<: $session_user_data.screen_name :></a></p>
+            <p class="person-comment"><: $session_user_data.text :></p>
+          </div>
+          <div class="post-box">
+            <p>フィードを投稿する</p>
+            <form method="POST" action="/message/new" enctype="multipart/form-data">
+              <textarea name="text" placeholder="投稿内容"></textarea>
+              <label>
+                <div class="output-image-box side-new"><img src="" class="output-image"></div>
+                <p class="camera-icon"><i class="fa fa-camera fa-2x" aria-hidden="true"></i></p>
+                <input name="image" type="file" class="input-image side-new" hidden>
+              </label>
+              <button type="submit" class="is-disabled" disabled><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>投稿する</button>
+            </form>
+          </div>
+        </div>
+      </div>
+: if($error_message){
+        <p><: $errror_message :></p>
+: }
+      <div class="main-column">
+
+: if(!$messages[0]){
+        <p class="no-message">投稿はなにもありません</p>
+: }
+: for $messages -> $message {
+        <div class="feed">
+          <a class="person-icon" href="/<: $message.screen_name :>">
+            : if($message.user_image){
+            <img src="/static/img/<: $message.user_image :>">
+            : }
+          </a>
+          <div class="wrapper">
+            <div class="name-date-box">
+              <p class="name-box"><span class="person-name"><a href="/<: $message.screen_name :>"><: $message.name :></a></span><br><span class="person-id"><a href="/<: $message.screen_name :>">@<: $message.screen_name :></a></span></p>
+              <p class="post-date"><: $message.created_at :></p>
+            </div>
+            <p class="comment"><: $message.text :></p>
+            : if($message.message_image){
+            <div class="main-img"><img src="/static/img/<: $message.message_image :>" class="output-image"></div>
+            : }
+            : if($session_user_data.id == $message.user_id){
+            <div class="command-box" data-message-id="<: $message.id :>" >
+              <p class="reply"><button><i class="fa fa-lg fa-share" aria-hidden="true"></i>返信</button></p>
+              <p class="delete"><button><i class="fa fa-lg fa-trash-o" aria-hidden="true"></i>削除</button></p>
+                <p class="edit"><button><i class="fa fa-lg fa-pencil" aria-hidden="true"></i>編集</button></p>
+            </div>
+            : }
+          </div>
+        </div>
+: }
+      </div>
+    </main>
+: }

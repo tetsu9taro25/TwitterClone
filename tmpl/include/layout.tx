@@ -1,20 +1,41 @@
 <!doctype html>
 <html>
-<head>
+  <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>TwitterClone</title>
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
     <meta name="format-detection" content="telephone=no" />
-    <script src="<: uri_for('/static/js/jquery-2.1.1.min.js') :>"></script>
-    <link href="<: static_file('/static/css/style.css') :>" rel="stylesheet" type="text/css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" />
+    <script src="<: uri_for('/static/js/vendor/jquery-2.1.1.min.js') :>"></script>
+    <script src="<: uri_for('/static/js/vendor/xsrf-token.js') :>"></script>
+    <link href="<: static_file('/static/css/main.css') :>" rel="stylesheet" type="text/css" media="screen" />
+    <link href="<: static_file('/static/font-awesome/css/font-awesome.min.css') :>" rel="stylesheet" type="text/css" media="screen" />
     <script src="<: static_file('/static/js/main.js') :>"></script>
     <!--[if lt IE 9]>
-        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-</head>
-<body>
+  </head>
+  <body>
+
+    <header>
+      <div class="wrapper">
+        <nav>
+          <a href="/"
+            : if $current == "home" {
+            class="is-current"
+            : }
+            >Twitter<i class="fa fa-lg fa-twitter " aria-hidden="true" style="margin: 0 !important;"></i>Clone</a>
+        </nav>
+: if $current != "signup" {
+        <a href="/signup" class="account-btn border-btn"><i class="fa fa-lg fa-user-plus" aria-hidden="true"></i>アカウント作成</a>
+: }
+: if $current != "login" {
+        <a href="/login" class="login-btn border-btn"><i class="fa fa-lg fa-sign-in" aria-hidden="true"></i>ログイン</a>
+: }
+      </div>
+    </header>
   <: block content -> { } :>
 </body>
 </html>
