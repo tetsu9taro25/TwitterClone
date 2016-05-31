@@ -95,8 +95,8 @@ $(function(){
 
   $('form [name=screen_name]').focus();
 
-  $('.side-colmun').on('change',$('.side-colmun .input-image.prof'),function(event){
-    var selectedFile = event.target.files[0] ;
+  $('.input-image.prof').change(function(){
+    var selectedFile = this.files[0];
     var fileReader = new FileReader() ;
     fileReader.onload = function(event) {
       var dataUri = event.target.result ;

@@ -1,7 +1,7 @@
 : cascade "include/layout.tx"
 : override content -> {
     <main>
-      <h1 class="index-explain">Twitter<i class="fa fa-lg fa-twitter " aria-hidden="true" style="margin: 0 !important;"></i>Cloneへようこそ！</h1>
+      <h1 class="index-explain">TwitterCloneへようこそ！</h1>
       <h2 class="index-explain">こんな感じで、写真やテキストが投稿ができます。</h2>
       <div class="index-colmun">
 : for $messages -> $message {
